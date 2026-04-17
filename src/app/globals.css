@@ -1,26 +1,242 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* =========================================================
+     Brand palette — 4 colors from client spec
+     Warm white  #F7F5F2  —  primary background
+     Warm gray   #D8D4CE  —  surfaces, image backgrounds
+     Copper      #B87333  —  accent, price, tags, icons
+     Deep stone  #3A3530  —  primary CTA buttons, footer
+     ========================================================= */
+
+  /* Core surfaces */
+  --background: #F7F5F2;
+  --surface: #F7F5F2;
+  --surface-bright: #FFFFFF;
+  --surface-container-lowest: #FFFFFF;
+  --surface-container-low: #EDE9E3; /* subtle intermediate — form fields, muted card backs */
+  --surface-container: #D8D4CE;
+  --surface-container-high: #D8D4CE;
+  --surface-container-highest: #D8D4CE;
+  --surface-dim: #D8D4CE;
+  --surface-variant: #D8D4CE;
+
+  /* Text + primary */
+  --on-background: #1b1c1a;
+  --on-surface: #1b1c1a;
+  --on-surface-variant: #4c463f;
+  --primary: #24201b;
+  --primary-container: #3A3530; /* brand deep stone — CTAs, footer */
+  --on-primary: #ffffff;
+
+  /* Secondary — brand copper */
+  --secondary: #B87333;
+  --secondary-container: #E5B88D;
+  --on-secondary: #ffffff;
+
+  /* Outlines + borders */
+  --outline: #8a857f;
+  --outline-variant: #C4BDB3;
+
+  /* Error */
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+
+  /* Legacy alias */
+  --foreground: var(--on-background);
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-variant: var(--surface-variant);
+
+  --color-on-background: var(--on-background);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary: var(--on-primary);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary: var(--on-secondary);
+
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+
+  --color-foreground: var(--on-background);
+
+  --font-headline: var(--font-newsreader);
+  --font-serif: var(--font-newsreader);
+  --font-body: var(--font-manrope);
+  --font-sans: var(--font-manrope);
+  --font-label: var(--font-manrope);
+
+  --radius: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--background);
+  color: var(--on-background);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-manrope), system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+/* Label */
+.label-text {
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Hairline borders — mockup signature precision detail */
+.hairline { border: 0.5px solid var(--outline-variant); }
+.hairline-bottom { border-bottom: 0.5px solid var(--outline-variant); }
+.hairline-top { border-top: 0.5px solid var(--outline-variant); }
+
+::selection {
+  background-color: var(--surface-container-high);
+  color: var(--primary);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll reveal base */
+[data-reveal] {
+  will-change: transform, opacity;
+}
+
+/* Material Symbols baseline — light weight for editorial feel */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Accessibility */
+:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+/* Origins map marker pulse */
+@keyframes origin-pulse {
+  0%, 100% {
+    r: 11;
+    stroke-opacity: 0.35;
+  }
+  50% {
+    r: 16;
+    stroke-opacity: 0;
+  }
+}
+
+.origin-pulse {
+  animation: origin-pulse 2.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .origin-pulse {
+    animation: none;
+  }
+}
+
+/* Hero name + metadata reveal — runs on React key change, no GSAP state */
+@keyframes hero-name-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 36px, 0);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.hero-name {
+  animation: hero-name-in 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, filter;
+}
+
+.hero-fade-up {
+  animation: hero-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  animation-delay: 0.1s;
+  animation-fill-mode: both;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-name,
+  .hero-fade-up {
+    animation: none;
+  }
+}
+
+/* Ambient warm radial — slow, fixed, pointer-events-none (protocol §7) */
+@keyframes ambient-drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(2vw, -1vw, 0); }
+}
+
+.ambient-warm {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 25%, rgba(184, 115, 51, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 45% at 75% 70%, rgba(58, 53, 48, 0.04) 0%, transparent 60%);
+  animation: ambient-drift 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-warm { animation: none; }
 }
