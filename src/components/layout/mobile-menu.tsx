@@ -61,7 +61,7 @@ export function MobileMenu({ links, isOpen, onClose }: MobileMenuProps) {
     <div
       ref={overlayRef}
       className="fixed inset-0 z-[60] bg-surface/95 backdrop-blur-2xl"
-      style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
+      style={{ pointerEvents: isOpen ? 'auto' : 'none', visibility: 'hidden' }}
     >
       {/* Top bar */}
       <div className="flex items-center justify-between px-6 py-4 hairline-bottom">
