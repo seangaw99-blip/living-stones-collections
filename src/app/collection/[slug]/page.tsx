@@ -161,7 +161,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </div>
 
       {/* Specimen Hero — Asymmetrical 1fr + 400px */}
-      <section className="mb-32 grid grid-cols-1 items-start gap-12 lg:grid-cols-[1fr_400px] lg:gap-24">
+      <section className="mb-16 grid grid-cols-1 items-start gap-12 md:mb-24 lg:grid-cols-[1fr_400px] lg:gap-24 lg:mb-32">
         {/* Image */}
         <ImageGallery images={specimen.images} name={specimen.name} />
 

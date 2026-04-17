@@ -83,12 +83,11 @@ export default async function CollectionPage({
       />
       {/* Page Header */}
       <header className="mx-auto w-full max-w-screen-2xl px-6 pt-16 pb-12 md:px-12 md:pt-24 md:pb-16">
-        <h1 className="font-headline text-5xl font-light tracking-tight text-primary md:text-7xl">
+        <h1 className="font-headline text-4xl font-light tracking-tight text-primary md:text-6xl lg:text-7xl">
           The Collection
         </h1>
         <p className="mt-6 max-w-xl font-body text-[15px] leading-[1.7] text-on-surface-variant">
-          {specimens.length} rare mineral specimen
-          {specimens.length !== 1 ? 's' : ''} available now &mdash; sourced from
+          {specimens.length} rare mineral specimen{specimens.length !== 1 ? 's' : ''} available now &mdash; sourced from
           six origins worldwide and curated for serious collectors. Each piece
           is singular; when it sells, it is gone.
         </p>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 interface FilterSidebarProps {
@@ -79,6 +79,7 @@ export function FilterSidebar({ origins }: FilterSidebarProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [open, setOpen] = useState(false);
 
   const currentOrigin = searchParams.get('origin') || '';
   const currentSort = searchParams.get('sort') || '';
@@ -96,9 +97,25 @@ export function FilterSidebar({ origins }: FilterSidebarProps) {
   );
 
   const hasFilters = currentOrigin || currentPrice || currentSort;
+  const activeCount = [currentOrigin, currentPrice, currentSort].filter(Boolean).length;
 
   return (
-    <aside className="space-y-12">
+    <aside>
+      {/* Mobile toggle */}
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="mb-6 flex w-full items-center justify-between hairline rounded-lg px-5 py-3 lg:hidden"
+      >
+        <span className="font-body text-[13px] text-on-surface">
+          Filters{activeCount > 0 && <span className="ml-2 rounded-full bg-secondary px-2 py-0.5 text-[11px] text-on-primary">{activeCount}</span>}
+        </span>
+        <span className="material-symbols-outlined text-[18px] text-outline transition-transform duration-200" style={{ transform: open ? 'rotate(180deg)' : 'none' }}>
+          expand_more
+        </span>
+      </button>
+
+      <div className={cn('space-y-12', !open && 'hidden lg:block')}>
       <FilterGroup label="Origin">
         {origins.map((origin) => (
           <CheckOption
@@ -159,6 +176,7 @@ export function FilterSidebar({ origins }: FilterSidebarProps) {
           Clear all filters
         </button>
       )}
+      </div>
     </aside>
   );
 }

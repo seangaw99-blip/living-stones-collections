@@ -48,7 +48,7 @@ export function OriginsMap() {
           </h2>
           <p className="mt-6 max-w-md font-body text-[14px] leading-[1.7] text-on-surface-variant">
             Every specimen in the collection has a place on the map &mdash; a
-            mine, a region, a seam of rock that produced it. Hover a point to
+            mine, a region, a seam of rock that produced it. Tap a point to
             see what came from where.
           </p>
         </div>

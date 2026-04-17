@@ -252,7 +252,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-[1] flex flex-col items-center justify-start pt-24 md:pt-28 lg:pt-32"
         aria-hidden
       >
-        <span className="font-headline font-light text-primary leading-[0.82] tracking-[-0.04em] text-[clamp(92px,17.5vw,320px)] whitespace-nowrap">
+        <span className="font-headline font-light text-primary leading-[0.9] tracking-[-0.04em] text-[clamp(72px,17.5vw,320px)] text-center break-words">
           Living Stones
         </span>
       </div>

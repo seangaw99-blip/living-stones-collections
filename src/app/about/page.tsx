@@ -83,7 +83,7 @@ export default function AboutPage() {
       <Container size="narrow">
         <span className="label-text text-outline">About</span>
 
-        <h1 className="mt-4 font-headline text-5xl font-light leading-tight tracking-tight text-primary md:text-6xl">
+        <h1 className="mt-4 font-headline text-4xl font-light leading-tight tracking-tight text-primary md:text-5xl lg:text-6xl">
           Pieces you would keep. Not just own.
         </h1>
 
