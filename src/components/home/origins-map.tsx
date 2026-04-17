@@ -48,14 +48,92 @@ export function OriginsMap() {
           </h2>
           <p className="mt-6 max-w-md font-body text-[14px] leading-[1.7] text-on-surface-variant">
             Every specimen in the collection has a place on the map &mdash; a
-            mine, a region, a seam of rock that produced it. Tap a point to
-            see what came from where.
+            mine, a region, a seam of rock that produced it.{' '}
+            <span className="hidden md:inline">Tap a point to see what came from where.</span>
+            <span className="md:hidden">Select an origin below to explore.</span>
           </p>
         </div>
 
-        {/* Map — full container width, detail card floats over it */}
-        <div className="relative mt-16" data-reveal>
-          <div className="relative mx-auto aspect-[16/9] w-[95%] md:aspect-[2/1]">
+        {/* ── Mobile layout: origin pills + detail card ── */}
+        <div className="mt-12 md:hidden" data-reveal>
+          {/* Horizontal scrollable origin pills */}
+          <div className="-mx-6 flex gap-2 overflow-x-auto px-6 pb-1 no-scrollbar">
+            {stops.map((s) => {
+              const isActive = s.specimen.slug === activeSlug;
+              const country = s.specimen.origin.includes(',')
+                ? s.specimen.origin.split(',').pop()!.trim()
+                : s.specimen.origin;
+              return (
+                <button
+                  key={s.specimen.slug}
+                  type="button"
+                  onClick={() => setActiveSlug(s.specimen.slug)}
+                  className={cn(
+                    'shrink-0 rounded-full border px-4 py-2 font-body text-[12px] transition-colors duration-200',
+                    isActive
+                      ? 'border-secondary bg-secondary text-on-primary'
+                      : 'border-outline-variant text-on-surface-variant hover:border-outline'
+                  )}
+                >
+                  {country}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Detail card — full width on mobile */}
+          <div
+            key={active.specimen.slug}
+            className="hero-fade-up mt-6 hairline flex flex-col bg-background p-5"
+          >
+            <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-dim">
+              <Image
+                src={active.specimen.images[0]}
+                alt={`${active.specimen.name} from ${active.specimen.origin} — ${active.specimen.weight} mineral specimen`}
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+              {active.specimen.tags.length > 0 && (
+                <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
+                  {active.specimen.tags.map((tag) => <Tag key={tag} variant={tag} />)}
+                </div>
+              )}
+            </div>
+            <div className="mt-5 flex items-baseline justify-between gap-3">
+              <span className="label-text text-outline">Now showing</span>
+              <span className="label-text text-secondary">{active.accentLabel}</span>
+            </div>
+            <h3 className="mt-2 font-headline text-xl font-light leading-snug tracking-tight text-primary">
+              {active.specimen.name}
+            </h3>
+            <p className="mt-1 font-headline text-base font-light italic text-primary/75">
+              {active.specimen.origin}
+            </p>
+            <p className="mt-1 label-text text-outline">
+              {active.specimen.weight}
+              {active.specimen.dimensions && ` · ${active.specimen.dimensions}`}
+            </p>
+            <p className="mt-4 font-body text-[13px] leading-[1.65] text-on-surface-variant line-clamp-3">
+              {active.specimen.formationNotes}
+            </p>
+            <div className="mt-5 hairline-top pt-4">
+              <Link
+                href={`/collection/${active.specimen.slug}`}
+                className="group inline-flex items-center gap-2 font-body text-[13px] text-on-surface underline underline-offset-4 decoration-[0.5px] decoration-outline/50 transition-colors hover:text-secondary"
+              >
+                View this piece
+                <span className="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden>
+                  arrow_forward
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Desktop layout: map + floating card + origin labels ── */}
+        <div className="relative mt-16 hidden md:block" data-reveal>
+          <div className="relative mx-auto aspect-[2/1] w-[95%]">
             <ComposableMap
               projection="geoEqualEarth"
               projectionConfig={{ scale: 200 }}
@@ -122,11 +200,11 @@ export function OriginsMap() {
             </ComposableMap>
           </div>
 
-          {/* Floating detail card — bottom-right of map on desktop, below on mobile */}
-          <aside className="relative mt-8 max-w-full md:absolute md:left-0 md:top-0 md:mt-0 md:max-w-[280px] lg:max-w-[320px]">
+          {/* Floating detail card */}
+          <aside className="absolute left-0 top-0 max-w-[280px] lg:max-w-[320px]">
             <div
               key={active.specimen.slug}
-              className="hero-fade-up hairline flex flex-col bg-background p-5 md:p-6"
+              className="hero-fade-up hairline flex flex-col bg-background p-6"
             >
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface-dim">
                 <Image
@@ -134,24 +212,19 @@ export function OriginsMap() {
                   alt={`${active.specimen.name} from ${active.specimen.origin} — ${active.specimen.weight} mineral specimen`}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 320px"
+                  sizes="320px"
                 />
                 {active.specimen.tags.length > 0 && (
                   <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
-                    {active.specimen.tags.map((tag) => (
-                      <Tag key={tag} variant={tag} />
-                    ))}
+                    {active.specimen.tags.map((tag) => <Tag key={tag} variant={tag} />)}
                   </div>
                 )}
               </div>
-
               <div className="mt-5 flex items-baseline justify-between gap-3">
                 <span className="label-text text-outline">Now showing</span>
-                <span className="label-text text-secondary">
-                  {active.accentLabel}
-                </span>
+                <span className="label-text text-secondary">{active.accentLabel}</span>
               </div>
-              <h3 className="mt-2 font-headline text-xl font-light leading-snug tracking-tight text-primary md:text-2xl">
+              <h3 className="mt-2 font-headline text-2xl font-light leading-snug tracking-tight text-primary">
                 {active.specimen.name}
               </h3>
               <p className="mt-2 font-headline text-base font-light italic text-primary/75">
@@ -159,24 +232,18 @@ export function OriginsMap() {
               </p>
               <p className="mt-1 label-text text-outline">
                 {active.specimen.weight}
-                {active.specimen.dimensions &&
-                  ` · ${active.specimen.dimensions}`}
+                {active.specimen.dimensions && ` · ${active.specimen.dimensions}`}
               </p>
-
               <p className="mt-4 font-body text-[13px] leading-[1.65] text-on-surface-variant line-clamp-3">
                 {active.specimen.formationNotes}
               </p>
-
               <div className="mt-5 hairline-top pt-4">
                 <Link
                   href={`/collection/${active.specimen.slug}`}
                   className="group inline-flex items-center gap-2 font-body text-[13px] text-on-surface underline underline-offset-4 decoration-[0.5px] decoration-outline/50 transition-colors hover:text-secondary"
                 >
                   View this piece
-                  <span
-                    className="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:translate-x-0.5"
-                    aria-hidden
-                  >
+                  <span className="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden>
                     arrow_forward
                   </span>
                 </Link>
@@ -185,8 +252,8 @@ export function OriginsMap() {
           </aside>
         </div>
 
-        {/* Origin list — caption row below */}
-        <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+        {/* Origin labels — desktop only */}
+        <div className="mt-6 hidden flex-wrap gap-x-5 gap-y-2 md:flex">
           {stops.map((s) => {
             const isActive = s.specimen.slug === activeSlug;
             return (
@@ -198,9 +265,7 @@ export function OriginsMap() {
                 onClick={() => setActiveSlug(s.specimen.slug)}
                 className={cn(
                   'label-text transition-colors',
-                  isActive
-                    ? 'text-secondary'
-                    : 'text-outline hover:text-primary'
+                  isActive ? 'text-secondary' : 'text-outline hover:text-primary'
                 )}
               >
                 {s.specimen.origin}
