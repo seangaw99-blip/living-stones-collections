@@ -228,7 +228,7 @@ export function Hero() {
             data-hero-img
             data-active={i === activeIndex}
             className={cn(
-              'absolute left-1/2 top-[58%] -translate-x-1/2 -translate-y-1/2',
+              'absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 md:top-[58%]',
               i === activeIndex ? 'opacity-100' : 'opacity-0',
               'transition-opacity duration-700 ease-out md:transition-none'
             )}
@@ -240,7 +240,7 @@ export function Hero() {
               width={896}
               height={1200}
               priority={i === 0}
-              className="h-[54vh] w-auto max-h-[640px] min-h-[340px] object-contain drop-shadow-[0_12px_28px_rgba(58,53,48,0.05)]"
+              className="h-[38vh] w-auto min-h-[200px] max-h-[420px] object-contain drop-shadow-[0_12px_28px_rgba(58,53,48,0.05)] md:h-[54vh] md:min-h-[340px] md:max-h-[640px]"
               sizes="(max-width: 1024px) 60vw, 42vw"
             />
           </div>
@@ -263,71 +263,73 @@ export function Hero() {
       {/* Content overlay */}
       <div className="absolute inset-0 z-20">
 
-        {/* Specimen block — bottom-left, combines name + origin + details */}
-        <div
-          key={`info-${stop.specimen.slug}`}
-          className="hero-fade-up absolute bottom-16 left-6 max-w-md md:bottom-20 md:left-8 lg:left-12"
-        >
-          <span className="label-text text-outline tabular-nums">
-            {String(activeIndex + 1).padStart(2, '0')} /{' '}
-            {String(count).padStart(2, '0')}
-            <span className="ml-3 text-primary">
-              &middot; {stop.accentLabel}
-            </span>
-          </span>
-          <h1 className="mt-3 font-headline text-3xl font-light leading-tight tracking-tight text-primary md:text-4xl lg:text-5xl">
-            {stop.specimen.name}
-          </h1>
-          <p className="mt-3 font-headline text-lg font-light italic text-primary/80 md:text-xl">
-            {stop.specimen.origin}
-          </p>
-          <p className="mt-1 label-text text-outline">
-            {stop.specimen.weight}
-            {stop.specimen.dimensions && ` · ${stop.specimen.dimensions}`}
-          </p>
-        </div>
+        {/* Bottom strip — stacks info + CTA + dots */}
+        <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-0 md:contents">
 
-        {/* CTA — bottom-right */}
-        <div className="absolute bottom-20 right-6 md:bottom-24 md:right-8 lg:right-12">
-          <Link
-            href={`/collection/${stop.specimen.slug}`}
-            aria-label={`View ${stop.specimen.name} — mineral specimen`}
-            className="group inline-flex items-center gap-3 rounded-lg bg-primary-container px-6 py-3 text-on-primary transition-colors hover:bg-primary"
+          {/* Specimen info — bottom-left on desktop, top of strip on mobile */}
+          <div
+            key={`info-${stop.specimen.slug}`}
+            className="hero-fade-up px-6 pt-5 pb-2 md:absolute md:bottom-20 md:left-8 md:px-0 md:pt-0 md:pb-0 lg:left-12"
           >
-            <span className="font-body text-[13px] font-medium tracking-wide">
-              View this piece
+            <span className="label-text text-outline tabular-nums">
+              {String(activeIndex + 1).padStart(2, '0')} /{' '}
+              {String(count).padStart(2, '0')}
+              <span className="ml-3 text-primary">&middot; {stop.accentLabel}</span>
             </span>
-            <span
-              className="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:translate-x-0.5"
-              aria-hidden
-            >
-              arrow_forward
-            </span>
-          </Link>
-        </div>
+            <h1 className="mt-2 font-headline text-2xl font-light leading-tight tracking-tight text-primary md:mt-3 md:text-4xl lg:text-5xl">
+              {stop.specimen.name}
+            </h1>
+            <p className="mt-1 font-headline text-base font-light italic text-primary/80 md:mt-3 md:text-xl">
+              {stop.specimen.origin}
+            </p>
+            <p className="mt-0.5 label-text text-outline md:mt-1">
+              {stop.specimen.weight}
+              {stop.specimen.dimensions && ` · ${stop.specimen.dimensions}`}
+            </p>
+          </div>
 
-        {/* Progress dots — bottom center */}
-        <div
-          className="absolute bottom-10 left-1/2 flex -translate-x-1/2 items-center gap-3"
-          role="tablist"
-          aria-label="Specimen showcase"
-        >
-          {stops.map((s, i) => (
-            <button
-              key={s.specimen.slug}
-              type="button"
-              role="tab"
-              aria-selected={i === activeIndex}
-              aria-label={`Show ${s.specimen.name}`}
-              onClick={() => jumpTo(i)}
-              className={cn(
-                'h-1.5 rounded-full transition-all duration-500 ease-out',
-                i === activeIndex
-                  ? 'w-12 bg-primary'
-                  : 'w-6 bg-outline-variant hover:bg-outline'
-              )}
-            />
-          ))}
+          {/* CTA + dots row — mobile: side by side; desktop: separate absolute positions */}
+          <div className="flex items-center justify-between px-6 pb-6 pt-3 md:contents">
+            <Link
+              href={`/collection/${stop.specimen.slug}`}
+              aria-label={`View ${stop.specimen.name} — mineral specimen`}
+              className="group inline-flex items-center gap-3 rounded-lg bg-primary-container px-5 py-2.5 text-on-primary transition-colors hover:bg-primary md:absolute md:bottom-24 md:right-8 md:px-6 md:py-3 lg:right-12"
+            >
+              <span className="font-body text-[13px] font-medium tracking-wide">
+                View this piece
+              </span>
+              <span
+                className="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:translate-x-0.5"
+                aria-hidden
+              >
+                arrow_forward
+              </span>
+            </Link>
+
+            {/* Dots */}
+            <div
+              className="flex items-center gap-2 md:absolute md:bottom-10 md:left-1/2 md:-translate-x-1/2 md:gap-3"
+              role="tablist"
+              aria-label="Specimen showcase"
+            >
+              {stops.map((s, i) => (
+                <button
+                  key={s.specimen.slug}
+                  type="button"
+                  role="tab"
+                  aria-selected={i === activeIndex}
+                  aria-label={`Show ${s.specimen.name}`}
+                  onClick={() => jumpTo(i)}
+                  className={cn(
+                    'h-1.5 rounded-full transition-all duration-500 ease-out',
+                    i === activeIndex
+                      ? 'w-8 bg-primary md:w-12'
+                      : 'w-4 bg-outline-variant hover:bg-outline md:w-6'
+                  )}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
