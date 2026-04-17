@@ -166,10 +166,14 @@ export default function RootLayout({
       className={`${manrope.variable} ${newsreader.variable} h-full antialiased`}
     >
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
         />
+        <style>{`.material-symbols-outlined{visibility:hidden}.fonts-loaded .material-symbols-outlined{visibility:visible}`}</style>
+        <script dangerouslySetInnerHTML={{ __html: `document.fonts.ready.then(()=>{document.documentElement.classList.add('fonts-loaded')})` }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
