@@ -81,16 +81,25 @@ export default async function CollectionPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      {/* Page Header */}
-      <header className="mx-auto w-full max-w-screen-2xl px-6 pt-16 pb-12 md:px-12 md:pt-24 md:pb-16">
-        <h1 className="font-headline text-5xl font-normal tracking-tight leading-[1.02] text-primary md:text-7xl lg:text-8xl">
-          The Collection
+      {/* Page Header — viewport-filling display */}
+      <header className="mx-auto w-full max-w-screen-2xl px-6 pt-24 pb-16 md:px-12 md:pt-40 md:pb-24">
+        <span className="label-text text-secondary tracking-[0.2em]">Collection</span>
+        <h1 className="mt-6 font-headline font-medium tracking-[-0.035em] leading-[0.88] text-primary text-[clamp(64px,12vw,280px)]">
+          The
+          <br />
+          <span className="italic font-light text-primary/55">Collection.</span>
         </h1>
-        <p className="mt-6 max-w-xl font-body text-[15px] leading-[1.7] text-on-surface-variant">
-          {specimens.length} rare mineral specimen{specimens.length !== 1 ? 's' : ''} available now &mdash; sourced from
-          six origins worldwide and curated for serious collectors. Each piece
-          is singular; when it sells, it is gone.
-        </p>
+        <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-[auto_1fr] md:items-end md:gap-16">
+          <p className="font-headline text-6xl font-medium text-secondary md:text-7xl">
+            {specimens.length}
+            <span className="ml-3 font-headline text-xl font-light italic text-outline md:text-2xl">
+              piece{specimens.length !== 1 ? 's' : ''} available
+            </span>
+          </p>
+          <p className="max-w-xl font-body text-[16px] leading-[1.7] text-on-surface-variant md:text-[17px] md:pb-2">
+            Rare mineral specimens sourced from six origins worldwide and curated for serious collectors. Each piece is singular; when it sells, it is gone.
+          </p>
+        </div>
         {origins.length > 0 && (
           <nav
             aria-label="Browse by origin"

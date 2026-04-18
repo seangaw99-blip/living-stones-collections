@@ -38,7 +38,7 @@ export function OriginsMap() {
   if (!active) return null;
 
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-32 md:py-40">
       <Container>
         {/* Header */}
         <div className="max-w-2xl" data-reveal>

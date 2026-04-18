@@ -28,14 +28,16 @@ export function EmailSignup() {
   }
 
   return (
-    <section className="bg-surface-container-low py-20 md:py-24">
+    <section className="bg-primary-container py-32 md:py-40">
       <Container size="narrow">
         <div className="text-center" data-reveal>
-          <span className="label-text text-secondary">New arrivals</span>
-          <h2 className="mt-4 font-headline text-4xl font-normal leading-[1.1] tracking-tight text-primary md:text-5xl">
-            Be first to know.
+          <span className="label-text text-secondary tracking-[0.2em]">New arrivals</span>
+          <h2 className="mt-6 font-headline font-medium leading-[0.92] tracking-[-0.03em] text-on-primary text-[clamp(44px,7vw,120px)]">
+            Be first
+            <br />
+            <span className="italic font-light text-on-primary/55">to know.</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-sm font-body text-[15px] leading-[1.7] text-on-surface-variant">
+          <p className="mx-auto mt-8 max-w-md font-body text-[17px] leading-[1.7] text-on-primary/70">
             Rare pieces move fast. Join the list and get notified when new
             specimens arrive &mdash; before they are listed publicly.
           </p>
@@ -47,7 +49,7 @@ export function EmailSignup() {
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="mx-auto mt-8 flex max-w-sm flex-col gap-2 sm:flex-row"
+              className="mx-auto mt-12 flex max-w-lg flex-col gap-3 sm:flex-row"
             >
               <input
                 type="email"
@@ -55,26 +57,25 @@ export function EmailSignup() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className="hairline flex-1 rounded-lg bg-surface-container-lowest px-4 py-3 font-body text-[15px] text-on-surface outline-none transition-colors placeholder:text-on-surface-variant/50 focus:border-secondary"
+                className="flex-1 border-b-[1px] border-on-primary/40 bg-transparent px-2 py-4 font-body text-[17px] text-on-primary outline-none transition-colors placeholder:text-on-primary/40 focus:border-secondary"
               />
-              <Button
+              <button
                 type="submit"
-                variant="primary"
                 disabled={status === 'loading'}
-                className="shrink-0"
+                className="shrink-0 bg-secondary px-8 py-4 font-body text-[14px] font-semibold tracking-[0.1em] uppercase text-on-primary transition-colors hover:bg-on-primary hover:text-primary disabled:opacity-40"
               >
                 {status === 'loading' ? 'Joining...' : 'Join the list'}
-              </Button>
+              </button>
             </form>
           )}
 
           {status === 'error' && (
-            <p className="mt-3 font-body text-[12px] text-error">
+            <p className="mt-3 font-body text-[13px] text-error">
               Something went wrong. Please try again.
             </p>
           )}
 
-          <p className="mt-5 label-text text-outline">
+          <p className="mt-8 label-text text-on-primary/40 tracking-[0.2em]">
             No newsletters. Only new arrivals.
           </p>
         </div>

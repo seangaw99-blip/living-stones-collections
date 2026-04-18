@@ -3,14 +3,16 @@ import { Container } from '@/components/ui/container';
 
 export function ShippingInfo() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-32 md:py-40">
       <Container>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left — intro */}
           <div data-reveal className="lg:col-span-4">
             <span className="label-text text-secondary">Delivery</span>
-            <h2 className="mt-4 font-headline text-4xl font-normal leading-[1.08] tracking-tight text-primary md:text-5xl">
-              Packed slowly. Arrives safely.
+            <h2 className="mt-6 font-headline font-medium leading-[0.92] tracking-[-0.02em] text-primary text-[clamp(40px,5vw,88px)]">
+              Packed slowly.
+              <br />
+              <span className="italic font-light text-primary/55">Arrives safely.</span>
             </h2>
             <p className="mt-6 max-w-xs font-body text-[15px] leading-[1.7] text-on-surface-variant">
               Every specimen travels wrapped, foamed, and double-boxed. We ship

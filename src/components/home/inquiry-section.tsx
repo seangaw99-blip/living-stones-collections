@@ -5,7 +5,7 @@ import { SectionHeading } from '@/components/ui/section-heading';
 
 export function InquirySection() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-32 md:py-40">
       <Container>
         <SectionHeading
           eyebrow="Before you decide"

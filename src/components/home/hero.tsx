@@ -204,131 +204,139 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[100dvh] w-full overflow-hidden"
+      className="relative h-[100dvh] w-full overflow-hidden bg-primary-container"
     >
-      {/* Ambient accent tint — changes per specimen */}
-      <div
-        ref={accentRef}
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: `radial-gradient(ellipse 70% 60% at 50% 55%, ${stop.accentHex}14 0%, transparent 65%)`,
-        }}
-        aria-hidden
-      />
+      {/* ═══ Split-screen: image left (60%) on dark gallery wall, text right (40%) on warm white ═══ */}
+      <div className="grid h-full w-full grid-cols-1 md:grid-cols-[1.2fr_1fr] lg:grid-cols-[1.5fr_1fr]">
 
-      {/* All specimen images stacked — only active is visible */}
-      <div
-        ref={imagesRef}
-        className="pointer-events-none absolute inset-0 z-10 flex items-end justify-center"
-        aria-hidden
-      >
-        {stops.map((s, i) => (
+        {/* LEFT — specimen image on dark gallery wall */}
+        <div className="relative overflow-hidden bg-primary-container">
+          {/* Ambient accent tint */}
           <div
-            key={s.specimen.slug}
-            data-hero-img
-            data-active={i === activeIndex}
-            className={cn(
-              'absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 md:top-[58%]',
-              i === activeIndex ? 'opacity-100' : 'opacity-0',
-              'transition-opacity duration-700 ease-out md:transition-none'
-            )}
-            style={{ willChange: 'transform, opacity, filter' }}
-          >
-            <Image
-              src={s.heroImage}
-              alt={`${s.specimen.name} — ${s.specimen.origin}`}
-              width={896}
-              height={1200}
-              priority={i === 0}
-              className="h-[38vh] w-auto min-h-[200px] max-h-[420px] object-contain drop-shadow-[0_12px_28px_rgba(58,53,48,0.05)] md:h-[54vh] md:min-h-[340px] md:max-h-[640px]"
-              sizes="(max-width: 1024px) 60vw, 42vw"
-            />
+            ref={accentRef}
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background: `radial-gradient(ellipse 80% 60% at 50% 55%, ${stop.accentHex}30 0%, transparent 70%)`,
+            }}
+            aria-hidden
+          />
+
+          {/* Specimen images — stacked, crossfade */}
+          <div ref={imagesRef} className="absolute inset-0 flex items-center justify-center">
+            {stops.map((s, i) => (
+              <div
+                key={s.specimen.slug}
+                data-hero-img
+                data-active={i === activeIndex}
+                className={cn(
+                  'absolute inset-0 flex items-center justify-center',
+                  i === activeIndex ? 'opacity-100' : 'opacity-0',
+                  'transition-opacity duration-700 ease-out md:transition-none'
+                )}
+                style={{ willChange: 'transform, opacity, filter' }}
+              >
+                <Image
+                  src={s.heroImage}
+                  alt={`${s.specimen.name} — ${s.specimen.origin}`}
+                  width={1200}
+                  height={1600}
+                  priority={i === 0}
+                  className="h-[70vh] max-h-[900px] w-auto object-contain drop-shadow-[0_30px_80px_rgba(0,0,0,0.45)]"
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {/* Brand display — top center, mineral overlaps only the bottom of "Collections" */}
-      <div
-        className="pointer-events-none absolute inset-0 z-[1] flex flex-col items-center justify-start pt-24 md:pt-28 lg:pt-32"
-        aria-hidden
-      >
-        <span className="font-headline font-normal text-primary leading-[0.9] tracking-[-0.04em] text-[clamp(72px,17.5vw,320px)] text-center break-words">
-          Living Stones
-        </span>
-      </div>
-
-      {/* Accessible brand heading for SEO/screen readers */}
-      <h2 className="sr-only">The Living Stones Collections</h2>
-
-      {/* Content overlay */}
-      <div className="absolute inset-0 z-20">
-
-        {/* Bottom strip — stacks info + CTA + dots */}
-        <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-0 md:contents">
-
-          {/* Specimen info — bottom-left on desktop, top of strip on mobile */}
-          <div
-            key={`info-${stop.specimen.slug}`}
-            className="hero-fade-up px-6 pt-5 pb-2 md:absolute md:bottom-20 md:left-8 md:px-0 md:pt-0 md:pb-0 lg:left-12"
-          >
-            <span className="label-text text-outline tabular-nums">
-              {String(activeIndex + 1).padStart(2, '0')} /{' '}
+          {/* Counter — top-left over dark bg */}
+          <div className="absolute top-8 left-8 z-10 md:top-10 md:left-10">
+            <span className="label-text text-on-primary/60 tabular-nums">
+              {String(activeIndex + 1).padStart(2, '0')}
+              <span className="mx-2">/</span>
               {String(count).padStart(2, '0')}
-              <span className="ml-3 text-primary">&middot; {stop.accentLabel}</span>
             </span>
-            <h1 className="mt-2 font-headline text-2xl font-normal leading-tight tracking-tight text-primary md:mt-3 md:text-4xl lg:text-5xl">
+          </div>
+
+          {/* Accent label — bottom-left over dark bg */}
+          <div className="absolute bottom-8 left-8 z-10 md:bottom-10 md:left-10">
+            <span className="label-text text-secondary tracking-[0.2em]">
+              {stop.accentLabel}
+            </span>
+          </div>
+
+          {/* Progress dots — bottom-center over image */}
+          <div
+            className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 items-center gap-3 md:bottom-10"
+            role="tablist"
+            aria-label="Specimen showcase"
+          >
+            {stops.map((s, i) => (
+              <button
+                key={s.specimen.slug}
+                type="button"
+                role="tab"
+                aria-selected={i === activeIndex}
+                aria-label={`Show ${s.specimen.name}`}
+                onClick={() => jumpTo(i)}
+                className={cn(
+                  'h-1 rounded-full transition-all duration-500 ease-out',
+                  i === activeIndex
+                    ? 'w-16 bg-secondary'
+                    : 'w-8 bg-on-primary/25 hover:bg-on-primary/50'
+                )}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT — warm-white column with giant brand + specimen info */}
+        <div className="relative flex flex-col justify-between overflow-hidden bg-background px-6 py-12 md:px-10 md:py-16 lg:px-14 lg:py-20">
+
+          {/* Massive brand wordmark — top, stacked "LIVING / STONES" */}
+          <div className="pointer-events-none" aria-hidden>
+            <span className="block font-headline font-normal text-primary leading-[0.85] tracking-[-0.04em] text-[clamp(56px,13vw,180px)]">
+              Living
+            </span>
+            <span className="block font-headline italic font-light text-secondary leading-[0.85] tracking-[-0.02em] text-[clamp(56px,13vw,180px)]">
+              Stones.
+            </span>
+            <span className="mt-4 block label-text text-outline md:mt-6">
+              Est. Manila &middot; PH
+            </span>
+          </div>
+
+          {/* Accessible brand heading */}
+          <h2 className="sr-only">The Living Stones Collections</h2>
+
+          {/* Specimen info + CTA — bottom */}
+          <div key={`info-${stop.specimen.slug}`} className="hero-fade-up mt-10 md:mt-0">
+            <div className="mb-5 h-[0.5px] w-12 bg-secondary md:mb-8 md:w-16" />
+            <h1 className="font-headline font-medium leading-[0.95] tracking-[-0.02em] text-primary text-[clamp(32px,5vw,72px)]">
               {stop.specimen.name}
             </h1>
-            <p className="mt-1 font-headline text-base font-normal italic text-primary/80 md:mt-3 md:text-xl">
-              {stop.specimen.origin}
+            <p className="mt-3 font-headline text-lg font-normal italic text-primary/75 md:mt-4 md:text-xl">
+              from {stop.specimen.origin}
             </p>
-            <p className="mt-0.5 label-text text-outline md:mt-1">
+            <p className="mt-2 label-text text-outline">
               {stop.specimen.weight}
               {stop.specimen.dimensions && ` · ${stop.specimen.dimensions}`}
             </p>
-          </div>
 
-          {/* CTA + dots row — mobile: side by side; desktop: separate absolute positions */}
-          <div className="flex items-center justify-between px-6 pb-6 pt-3 md:contents">
             <Link
               href={`/collection/${stop.specimen.slug}`}
               aria-label={`View ${stop.specimen.name} — mineral specimen`}
-              className="group inline-flex items-center gap-3 rounded-lg bg-primary-container px-5 py-2.5 text-on-primary transition-colors hover:bg-primary md:absolute md:bottom-24 md:right-8 md:px-6 md:py-3 lg:right-12"
+              className="group mt-8 inline-flex items-center gap-3 bg-primary px-7 py-4 text-on-primary transition-colors hover:bg-secondary md:mt-10"
             >
-              <span className="font-body text-[14px] font-medium tracking-wide">
+              <span className="font-body text-[14px] font-semibold tracking-[0.1em] uppercase">
                 View this piece
               </span>
               <span
-                className="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:translate-x-0.5"
+                className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-1"
                 aria-hidden
               >
                 arrow_forward
               </span>
             </Link>
-
-            {/* Dots */}
-            <div
-              className="flex items-center gap-2 md:absolute md:bottom-10 md:left-1/2 md:-translate-x-1/2 md:gap-3"
-              role="tablist"
-              aria-label="Specimen showcase"
-            >
-              {stops.map((s, i) => (
-                <button
-                  key={s.specimen.slug}
-                  type="button"
-                  role="tab"
-                  aria-selected={i === activeIndex}
-                  aria-label={`Show ${s.specimen.name}`}
-                  onClick={() => jumpTo(i)}
-                  className={cn(
-                    'h-1.5 rounded-full transition-all duration-500 ease-out',
-                    i === activeIndex
-                      ? 'w-8 bg-primary md:w-12'
-                      : 'w-4 bg-outline-variant hover:bg-outline md:w-6'
-                  )}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </div>
