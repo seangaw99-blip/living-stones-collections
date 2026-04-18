@@ -248,8 +248,8 @@ export function Hero() {
             ))}
           </div>
 
-          {/* Counter — top-left over dark bg */}
-          <div className="absolute top-8 left-8 z-10 md:top-10 md:left-10">
+          {/* Counter — top-right of dark column (away from navbar) */}
+          <div className="absolute top-8 right-6 z-10 md:top-10 md:right-8">
             <span className="label-text text-on-primary/60 tabular-nums">
               {String(activeIndex + 1).padStart(2, '0')}
               <span className="mx-2">/</span>

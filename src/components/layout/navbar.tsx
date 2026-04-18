@@ -22,10 +22,12 @@ export function Navbar() {
   const [shown, setShown] = useState(false);
   const pathname = usePathname();
 
+  // Inverted (light text) when at top of homepage — over the dark-left half of the split hero
+  const isHome = pathname === '/';
+  const inverted = isHome && !shown;
+
   useEffect(() => {
-    const onScroll = () => {
-      setShown(window.scrollY > SCROLL_THRESHOLD);
-    };
+    const onScroll = () => setShown(window.scrollY > SCROLL_THRESHOLD);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -38,62 +40,51 @@ export function Navbar() {
           'fixed top-0 left-0 right-0 z-50 w-full',
           'transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
           shown
-            ? 'bg-surface/85 backdrop-blur-md hairline-bottom'
+            ? 'bg-background/90 backdrop-blur-md hairline-bottom'
             : 'bg-transparent'
         )}
       >
-        <div className="relative mx-auto flex w-full max-w-screen-2xl items-center justify-between px-6 py-4 md:px-8">
-          {/* Brand — left */}
+        <div className="mx-auto flex w-full max-w-screen-2xl items-center justify-between px-6 py-5 md:px-10 md:py-6">
+          {/* Brand wordmark — left */}
           <Link
             href="/"
             aria-label="The Living Stones Collections — Home"
-            className="relative z-10 flex items-center transition-opacity duration-300 hover:opacity-70"
+            className={cn(
+              'flex items-center gap-3 transition-opacity duration-500 hover:opacity-70',
+              inverted ? 'text-on-primary' : 'text-primary'
+            )}
           >
-            <Logo size={32} strokeWidth={2.5} />
+            <Logo size={28} strokeWidth={2.5} />
+            <span className="font-headline text-lg font-medium tracking-[-0.01em] md:text-xl">
+              Living Stones
+            </span>
           </Link>
 
-          {/* Desktop nav — absolutely centered in the bar */}
-          <nav className="pointer-events-auto absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
-            {navLinks.map((link) => {
-              const active = pathname?.startsWith(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    'font-headline italic text-lg capitalize tracking-tight transition-all duration-300 hover:opacity-70',
-                    active
-                      ? 'text-primary font-medium border-b border-outline/50'
-                      : 'text-on-surface-variant'
-                  )}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
+          {/* Menu + Cart — right (always dark, sits over warm-white right half of hero) */}
+          <div className="flex items-center gap-6 text-primary md:gap-8">
+            <button
+              onClick={() => setMenuOpen(true)}
+              aria-label="Open menu"
+              className="group flex items-center gap-2.5 font-body text-[13px] font-medium uppercase tracking-[0.2em] transition-colors hover:text-secondary"
+            >
+              <span className="underline underline-offset-[8px] decoration-[0.5px] decoration-outline/50 transition-colors group-hover:decoration-secondary">
+                Menu
+              </span>
+              <span className="flex flex-col gap-[3px]" aria-hidden>
+                <span className="block h-[1.5px] w-4 bg-current" />
+                <span className="block h-[1.5px] w-4 bg-current" />
+              </span>
+            </button>
 
-          {/* Right cluster */}
-          <div className="relative z-10 flex items-center gap-2">
             <Link
               href="/cart"
               aria-label="Shopping bag"
-              className="flex h-10 w-10 items-center justify-center text-primary transition-opacity duration-300 hover:opacity-70"
+              className="flex h-10 w-10 items-center justify-center transition-colors hover:text-secondary"
             >
               <span className="material-symbols-outlined text-[22px]">
                 shopping_bag
               </span>
             </Link>
-
-            {/* Hamburger — mobile only */}
-            <button
-              className="flex h-10 w-10 flex-col items-center justify-center gap-1 text-primary transition-opacity duration-300 hover:opacity-70 md:hidden"
-              onClick={() => setMenuOpen(true)}
-              aria-label="Open menu"
-            >
-              <span className="block h-[1px] w-5 bg-current" />
-              <span className="block h-[1px] w-5 bg-current" />
-            </button>
           </div>
         </div>
       </header>

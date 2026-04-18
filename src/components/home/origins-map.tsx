@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -29,16 +29,63 @@ const TOPO_URL =
 
 const stops = getFeaturedHeroStops();
 
+// Auto-advance cycle (ms per origin)
+const CYCLE_MS = 4500;
+// Pause auto-advance for this long after a user interaction (ms)
+const INTERACTION_LOCK_MS = 12000;
+
 export function OriginsMap() {
   const [activeSlug, setActiveSlug] = useState<string>(
     stops[0]?.specimen.slug ?? ''
   );
+  const sectionRef = useRef<HTMLElement>(null);
+  const lockUntilRef = useRef(0);
+  const inViewRef = useRef(false);
+
+  // User interaction handler — updates active slug AND arms the pause lock
+  const selectStop = useCallback((slug: string) => {
+    setActiveSlug(slug);
+    lockUntilRef.current = Date.now() + INTERACTION_LOCK_MS;
+  }, []);
+
+  // Auto-advance driver — cycles through origins when section is visible + not locked
+  useEffect(() => {
+    if (typeof window === 'undefined' || !sectionRef.current) return;
+
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+    if (reduceMotion) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        inViewRef.current = entries[0]?.isIntersecting ?? false;
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(sectionRef.current);
+
+    const tick = () => {
+      if (!inViewRef.current || Date.now() < lockUntilRef.current) return;
+      setActiveSlug((current) => {
+        const idx = stops.findIndex((s) => s.specimen.slug === current);
+        const next = stops[(idx + 1) % stops.length];
+        return next?.specimen.slug ?? stops[0]!.specimen.slug;
+      });
+    };
+
+    const interval = window.setInterval(tick, CYCLE_MS);
+    return () => {
+      observer.disconnect();
+      window.clearInterval(interval);
+    };
+  }, []);
 
   const active = stops.find((s) => s.specimen.slug === activeSlug) ?? stops[0];
   if (!active) return null;
 
   return (
-    <section className="py-32 md:py-40">
+    <section ref={sectionRef} className="py-32 md:py-40">
       <Container>
         {/* Header */}
         <div className="max-w-2xl" data-reveal>
@@ -49,8 +96,8 @@ export function OriginsMap() {
           <p className="mt-6 max-w-md font-body text-[15px] leading-[1.7] text-on-surface-variant">
             Every specimen in the collection has a place on the map &mdash; a
             mine, a region, a seam of rock that produced it.{' '}
-            <span className="hidden md:inline">Tap a point to see what came from where.</span>
-            <span className="md:hidden">Select an origin below to explore.</span>
+            <span className="hidden md:inline">Tap a point to pause and focus on it.</span>
+            <span className="md:hidden">Cycles through origins. Tap a pill to pause.</span>
           </p>
         </div>
 
@@ -67,7 +114,7 @@ export function OriginsMap() {
                 <button
                   key={s.specimen.slug}
                   type="button"
-                  onClick={() => setActiveSlug(s.specimen.slug)}
+                  onClick={() => selectStop(s.specimen.slug)}
                   className={cn(
                     'shrink-0 rounded-full border px-4 py-2 font-body text-[12px] transition-colors duration-200',
                     isActive
@@ -166,9 +213,9 @@ export function OriginsMap() {
                   <Marker
                     key={s.specimen.slug}
                     coordinates={coords}
-                    onMouseEnter={() => setActiveSlug(s.specimen.slug)}
-                    onFocus={() => setActiveSlug(s.specimen.slug)}
-                    onClick={() => setActiveSlug(s.specimen.slug)}
+                    onMouseEnter={() => selectStop(s.specimen.slug)}
+                    onFocus={() => selectStop(s.specimen.slug)}
+                    onClick={() => selectStop(s.specimen.slug)}
                     tabIndex={0}
                     role="button"
                     aria-label={`Show ${s.specimen.name} from ${s.specimen.origin}`}
@@ -260,9 +307,9 @@ export function OriginsMap() {
               <button
                 key={s.specimen.slug}
                 type="button"
-                onMouseEnter={() => setActiveSlug(s.specimen.slug)}
-                onFocus={() => setActiveSlug(s.specimen.slug)}
-                onClick={() => setActiveSlug(s.specimen.slug)}
+                onMouseEnter={() => selectStop(s.specimen.slug)}
+                onFocus={() => selectStop(s.specimen.slug)}
+                onClick={() => selectStop(s.specimen.slug)}
                 className={cn(
                   'label-text transition-colors',
                   isActive ? 'text-secondary' : 'text-outline hover:text-primary'
