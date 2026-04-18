@@ -33,11 +33,11 @@ export default async function InquirePage({
       <Container>
         {/* Header */}
         <div className="mb-16">
-          <span className="label-text text-outline">Inquire</span>
-          <h1 className="mt-4 font-headline text-5xl font-light leading-tight tracking-tight text-primary md:text-6xl">
+          <span className="label-text text-secondary">Inquire</span>
+          <h1 className="mt-4 font-headline text-5xl font-normal leading-tight tracking-tight text-primary md:text-6xl">
             See it before you decide.
           </h1>
-          <p className="mt-4 max-w-lg font-body text-[14px] leading-[1.7] text-on-surface-variant">
+          <p className="mt-4 max-w-lg font-body text-[15px] leading-[1.7] text-on-surface-variant">
             Every purchase starts with a conversation. Request a video call and
             we will show you the specimen up close &mdash; its texture, color,
             and scale &mdash; before you commit.
@@ -49,10 +49,10 @@ export default async function InquirePage({
           {/* Send a message */}
           <div>
             <div className="mb-8">
-              <h2 className="font-headline text-3xl font-light tracking-tight text-primary">
+              <h2 className="font-headline text-3xl font-normal tracking-tight text-primary">
                 Send a message
               </h2>
-              <p className="mt-2 font-body text-[13px] text-on-surface-variant">
+              <p className="mt-2 font-body text-[14px] text-on-surface-variant">
                 Ask about origin, pricing, or availability. We reply within 24
                 hours.
               </p>
@@ -65,10 +65,10 @@ export default async function InquirePage({
           {/* Book a video call */}
           <div id="video-call">
             <div className="mb-8">
-              <h2 className="font-headline text-3xl font-light tracking-tight text-primary">
+              <h2 className="font-headline text-3xl font-normal tracking-tight text-primary">
                 Book a video call
               </h2>
-              <p className="mt-2 font-body text-[13px] text-on-surface-variant">
+              <p className="mt-2 font-body text-[14px] text-on-surface-variant">
                 See the specimen live via Zoom, Google Meet, or Messenger.
                 Available Monday to Saturday, Philippines time.
               </p>

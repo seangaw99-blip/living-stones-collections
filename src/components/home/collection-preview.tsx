@@ -10,7 +10,7 @@ export function CollectionPreview() {
     <section className="py-16 md:py-24">
       <Container>
         <div className="mb-12 flex items-end justify-between">
-          <h2 className="font-headline text-4xl font-light text-primary md:text-5xl">
+          <h2 className="font-headline text-4xl font-normal text-primary md:text-5xl">
             Featured Specimens
           </h2>
           <Link

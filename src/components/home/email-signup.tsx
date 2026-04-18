@@ -32,16 +32,16 @@ export function EmailSignup() {
       <Container size="narrow">
         <div className="text-center" data-reveal>
           <span className="label-text text-secondary">New arrivals</span>
-          <h2 className="mt-4 font-headline text-4xl font-light leading-[1.1] tracking-tight text-primary md:text-5xl">
+          <h2 className="mt-4 font-headline text-4xl font-normal leading-[1.1] tracking-tight text-primary md:text-5xl">
             Be first to know.
           </h2>
-          <p className="mx-auto mt-4 max-w-sm font-body text-[14px] leading-[1.7] text-on-surface-variant">
+          <p className="mx-auto mt-4 max-w-sm font-body text-[15px] leading-[1.7] text-on-surface-variant">
             Rare pieces move fast. Join the list and get notified when new
             specimens arrive &mdash; before they are listed publicly.
           </p>
 
           {status === 'success' ? (
-            <div className="mt-8 inline-flex items-center gap-2 rounded-full border-[0.5px] border-secondary/70 bg-surface-container-highest px-6 py-3 font-body text-[13px] text-secondary">
+            <div className="mt-8 inline-flex items-center gap-2 rounded-full border-[0.5px] border-secondary/70 bg-surface-container-highest px-6 py-3 font-body text-[14px] text-secondary">
               You&apos;re on the list.
             </div>
           ) : (
@@ -55,7 +55,7 @@ export function EmailSignup() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className="hairline flex-1 rounded-lg bg-surface-container-lowest px-4 py-3 font-body text-[14px] text-on-surface outline-none transition-colors placeholder:text-on-surface-variant/50 focus:border-secondary"
+                className="hairline flex-1 rounded-lg bg-surface-container-lowest px-4 py-3 font-body text-[15px] text-on-surface outline-none transition-colors placeholder:text-on-surface-variant/50 focus:border-secondary"
               />
               <Button
                 type="submit"

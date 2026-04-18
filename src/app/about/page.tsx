@@ -81,9 +81,9 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <Container size="narrow">
-        <span className="label-text text-outline">About</span>
+        <span className="label-text text-secondary">About</span>
 
-        <h1 className="mt-4 font-headline text-4xl font-light leading-tight tracking-tight text-primary md:text-5xl lg:text-6xl">
+        <h1 className="mt-4 font-headline text-5xl font-normal leading-[1.02] tracking-tight text-primary md:text-6xl lg:text-7xl">
           Pieces you would keep. Not just own.
         </h1>
 
@@ -103,7 +103,7 @@ export default function AboutPage() {
         </div>
 
         <div className="mt-16">
-          <h2 className="font-headline text-3xl font-light tracking-tight text-primary">
+          <h2 className="font-headline text-3xl font-normal tracking-tight text-primary">
             How we source
           </h2>
           <div className="mt-8">
@@ -128,7 +128,7 @@ export default function AboutPage() {
                 <span className="label-text mt-1 shrink-0 text-secondary/70">
                   {item.n}
                 </span>
-                <p className="font-body text-[14px] leading-[1.7] text-on-surface-variant">
+                <p className="font-body text-[15px] leading-[1.7] text-on-surface-variant">
                   {item.text}
                 </p>
               </div>
@@ -138,8 +138,8 @@ export default function AboutPage() {
 
         {/* FAQ */}
         <div className="mt-24">
-          <span className="label-text text-outline">FAQ</span>
-          <h2 className="mt-4 font-headline text-3xl font-light tracking-tight text-primary md:text-4xl">
+          <span className="label-text text-secondary">FAQ</span>
+          <h2 className="mt-4 font-headline text-3xl font-normal tracking-tight text-primary md:text-4xl">
             Common questions.
           </h2>
 
@@ -150,7 +150,7 @@ export default function AboutPage() {
                 className="group border-b-[0.5px] border-outline-variant/40 first:border-t-[0.5px] first:border-t-outline-variant/40"
               >
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-6 text-primary transition-colors hover:text-secondary [&::-webkit-details-marker]:hidden">
-                  <h3 className="font-headline text-lg font-light leading-snug md:text-xl">
+                  <h3 className="font-headline text-lg font-normal leading-snug md:text-xl">
                     {item.q}
                   </h3>
                   <span
@@ -164,7 +164,7 @@ export default function AboutPage() {
                   </span>
                 </summary>
                 <div className="pb-6 pr-10">
-                  <p className="max-w-2xl font-body text-[14px] leading-[1.7] text-on-surface-variant">
+                  <p className="max-w-2xl font-body text-[15px] leading-[1.7] text-on-surface-variant">
                     {item.a}
                   </p>
                 </div>

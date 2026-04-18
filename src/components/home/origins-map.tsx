@@ -42,11 +42,11 @@ export function OriginsMap() {
       <Container>
         {/* Header */}
         <div className="max-w-2xl" data-reveal>
-          <span className="label-text text-outline">Globally sourced</span>
-          <h2 className="mt-4 font-headline text-4xl font-light leading-[1.1] tracking-tight text-primary md:text-5xl lg:text-6xl">
+          <span className="label-text text-secondary">Globally sourced</span>
+          <h2 className="mt-4 font-headline text-4xl font-normal leading-[1.1] tracking-tight text-primary md:text-5xl lg:text-6xl">
             Six origins. Six stories.
           </h2>
-          <p className="mt-6 max-w-md font-body text-[14px] leading-[1.7] text-on-surface-variant">
+          <p className="mt-6 max-w-md font-body text-[15px] leading-[1.7] text-on-surface-variant">
             Every specimen in the collection has a place on the map &mdash; a
             mine, a region, a seam of rock that produced it.{' '}
             <span className="hidden md:inline">Tap a point to see what came from where.</span>
@@ -104,23 +104,23 @@ export function OriginsMap() {
               <span className="label-text text-outline">Now showing</span>
               <span className="label-text text-secondary">{active.accentLabel}</span>
             </div>
-            <h3 className="mt-2 font-headline text-xl font-light leading-snug tracking-tight text-primary">
+            <h3 className="mt-2 font-headline text-xl font-normal leading-snug tracking-tight text-primary">
               {active.specimen.name}
             </h3>
-            <p className="mt-1 font-headline text-base font-light italic text-primary/75">
+            <p className="mt-1 font-headline text-base font-normal italic text-primary/75">
               {active.specimen.origin}
             </p>
             <p className="mt-1 label-text text-outline">
               {active.specimen.weight}
               {active.specimen.dimensions && ` · ${active.specimen.dimensions}`}
             </p>
-            <p className="mt-4 font-body text-[13px] leading-[1.65] text-on-surface-variant line-clamp-3">
+            <p className="mt-4 font-body text-[14px] leading-[1.65] text-on-surface-variant line-clamp-3">
               {active.specimen.formationNotes}
             </p>
             <div className="mt-5 hairline-top pt-4">
               <Link
                 href={`/collection/${active.specimen.slug}`}
-                className="group inline-flex items-center gap-2 font-body text-[13px] text-on-surface underline underline-offset-4 decoration-[0.5px] decoration-outline/50 transition-colors hover:text-secondary"
+                className="group inline-flex items-center gap-2 font-body text-[14px] text-on-surface underline underline-offset-4 decoration-[0.5px] decoration-outline/50 transition-colors hover:text-secondary"
               >
                 View this piece
                 <span className="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden>
@@ -224,23 +224,23 @@ export function OriginsMap() {
                 <span className="label-text text-outline">Now showing</span>
                 <span className="label-text text-secondary">{active.accentLabel}</span>
               </div>
-              <h3 className="mt-2 font-headline text-2xl font-light leading-snug tracking-tight text-primary">
+              <h3 className="mt-2 font-headline text-2xl font-normal leading-snug tracking-tight text-primary">
                 {active.specimen.name}
               </h3>
-              <p className="mt-2 font-headline text-base font-light italic text-primary/75">
+              <p className="mt-2 font-headline text-base font-normal italic text-primary/75">
                 {active.specimen.origin}
               </p>
               <p className="mt-1 label-text text-outline">
                 {active.specimen.weight}
                 {active.specimen.dimensions && ` · ${active.specimen.dimensions}`}
               </p>
-              <p className="mt-4 font-body text-[13px] leading-[1.65] text-on-surface-variant line-clamp-3">
+              <p className="mt-4 font-body text-[14px] leading-[1.65] text-on-surface-variant line-clamp-3">
                 {active.specimen.formationNotes}
               </p>
               <div className="mt-5 hairline-top pt-4">
                 <Link
                   href={`/collection/${active.specimen.slug}`}
-                  className="group inline-flex items-center gap-2 font-body text-[13px] text-on-surface underline underline-offset-4 decoration-[0.5px] decoration-outline/50 transition-colors hover:text-secondary"
+                  className="group inline-flex items-center gap-2 font-body text-[14px] text-on-surface underline underline-offset-4 decoration-[0.5px] decoration-outline/50 transition-colors hover:text-secondary"
                 >
                   View this piece
                   <span className="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden>

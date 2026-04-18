@@ -252,7 +252,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-[1] flex flex-col items-center justify-start pt-24 md:pt-28 lg:pt-32"
         aria-hidden
       >
-        <span className="font-headline font-light text-primary leading-[0.9] tracking-[-0.04em] text-[clamp(72px,17.5vw,320px)] text-center break-words">
+        <span className="font-headline font-normal text-primary leading-[0.9] tracking-[-0.04em] text-[clamp(72px,17.5vw,320px)] text-center break-words">
           Living Stones
         </span>
       </div>
@@ -276,10 +276,10 @@ export function Hero() {
               {String(count).padStart(2, '0')}
               <span className="ml-3 text-primary">&middot; {stop.accentLabel}</span>
             </span>
-            <h1 className="mt-2 font-headline text-2xl font-light leading-tight tracking-tight text-primary md:mt-3 md:text-4xl lg:text-5xl">
+            <h1 className="mt-2 font-headline text-2xl font-normal leading-tight tracking-tight text-primary md:mt-3 md:text-4xl lg:text-5xl">
               {stop.specimen.name}
             </h1>
-            <p className="mt-1 font-headline text-base font-light italic text-primary/80 md:mt-3 md:text-xl">
+            <p className="mt-1 font-headline text-base font-normal italic text-primary/80 md:mt-3 md:text-xl">
               {stop.specimen.origin}
             </p>
             <p className="mt-0.5 label-text text-outline md:mt-1">
@@ -295,7 +295,7 @@ export function Hero() {
               aria-label={`View ${stop.specimen.name} — mineral specimen`}
               className="group inline-flex items-center gap-3 rounded-lg bg-primary-container px-5 py-2.5 text-on-primary transition-colors hover:bg-primary md:absolute md:bottom-24 md:right-8 md:px-6 md:py-3 lg:right-12"
             >
-              <span className="font-body text-[13px] font-medium tracking-wide">
+              <span className="font-body text-[14px] font-medium tracking-wide">
                 View this piece
               </span>
               <span

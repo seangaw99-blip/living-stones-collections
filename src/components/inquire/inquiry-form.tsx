@@ -41,10 +41,10 @@ export function InquiryForm({ defaultPiece }: { defaultPiece?: string }) {
   if (status === 'success') {
     return (
       <div className="bg-surface-container-low p-10 text-center">
-        <p className="font-headline text-2xl font-light text-primary">
+        <p className="font-headline text-2xl font-normal text-primary">
           Message received.
         </p>
-        <p className="mt-2 font-body text-[13px] text-on-surface-variant">
+        <p className="mt-2 font-body text-[14px] text-on-surface-variant">
           We will be in touch within 24 hours.
         </p>
       </div>

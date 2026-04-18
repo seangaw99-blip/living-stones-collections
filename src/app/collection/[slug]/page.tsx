@@ -179,7 +179,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           )}
 
           {/* Title */}
-          <h1 className="mb-4 font-headline text-5xl font-light leading-tight text-on-surface">
+          <h1 className="mb-4 font-headline text-5xl font-normal leading-tight text-on-surface">
             {specimen.name}
           </h1>
 
@@ -198,7 +198,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           {/* Price */}
           {!isSold && (
-            <p className="mb-12 font-headline text-3xl font-light text-on-surface">
+            <p className="mb-12 font-headline text-4xl font-medium text-secondary">
               &#8369;{specimen.price.toLocaleString()}
             </p>
           )}
@@ -238,7 +238,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       {/* Features Grid */}
       <section className="mb-32 grid grid-cols-1 gap-12 border-t-[0.5px] border-outline-variant/40 pt-20 md:grid-cols-2 md:gap-24">
         <div className="bg-surface-container-low p-10 lg:p-14">
-          <h3 className="mb-6 font-headline text-2xl font-light text-on-surface">
+          <h3 className="mb-6 font-headline text-2xl font-normal text-on-surface">
             Formation &amp; History
           </h3>
           <p className="font-body text-sm leading-[1.7] text-on-surface-variant">
@@ -261,7 +261,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </p>
         </div>
         <div className="bg-surface-container-low p-10 lg:p-14">
-          <h3 className="mb-6 font-headline text-2xl font-light text-on-surface">
+          <h3 className="mb-6 font-headline text-2xl font-normal text-on-surface">
             Shipping Details
           </h3>
           <p className="mb-6 font-body text-sm leading-[1.7] text-on-surface-variant">
@@ -278,7 +278,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       {related.length > 0 && (
         <section className="mb-16">
           <div className="mb-12 flex items-end justify-between">
-            <h2 className="font-headline text-3xl font-light text-on-surface">
+            <h2 className="font-headline text-3xl font-normal text-on-surface">
               Related specimens
             </h2>
             <Link

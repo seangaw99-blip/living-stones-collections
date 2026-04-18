@@ -9,11 +9,11 @@ export function Footer() {
         <div className="flex flex-col">
           <div className="mb-4 flex items-center gap-3">
             <Logo size={32} strokeWidth={2.5} />
-            <h2 className="font-headline text-xl font-light text-stone-50">
+            <h2 className="font-headline text-xl font-normal text-stone-50">
               The Living Stones Collections
             </h2>
           </div>
-          <p className="mb-6 max-w-xs text-[13px] leading-relaxed text-stone-400/80">
+          <p className="mb-6 max-w-xs text-[14px] leading-relaxed text-stone-400/80">
             Curated geological art. Rare mineral specimens for collectors who value what lasts.
           </p>
           {/* NAP block — Local SEO signal */}

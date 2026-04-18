@@ -15,11 +15,11 @@ export function AboutStrip() {
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           {/* Left — copy */}
           <div data-reveal>
-            <span className="label-text text-outline">About</span>
-            <h2 className="mt-4 font-headline text-4xl font-light leading-[1.1] tracking-tight text-primary md:text-5xl">
+            <span className="label-text text-secondary">About</span>
+            <h2 className="mt-4 font-headline text-4xl font-normal leading-[1.1] tracking-tight text-primary md:text-5xl">
               Pieces you would keep. Not just own.
             </h2>
-            <p className="mt-6 max-w-md font-body text-[14px] leading-[1.7] text-on-surface-variant">
+            <p className="mt-6 max-w-md font-body text-[15px] leading-[1.7] text-on-surface-variant">
               The Living Stones is built for collectors who take their time. We
               source slowly, select fewer, and only carry specimens worth
               returning to.
@@ -41,7 +41,7 @@ export function AboutStrip() {
                 <span className="shrink-0 font-body text-[11px] tracking-wider text-secondary/70">
                   0{i + 1}
                 </span>
-                <p className="font-body text-[14px] leading-[1.7] text-on-surface-variant">
+                <p className="font-body text-[15px] leading-[1.7] text-on-surface-variant">
                   {point}
                 </p>
               </div>

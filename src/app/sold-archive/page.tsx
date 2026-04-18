@@ -29,11 +29,11 @@ export default function SoldArchivePage() {
     <div className="pt-16 pb-24 md:pt-24">
       <Container>
         <div className="mb-16">
-          <span className="label-text text-outline">Archive</span>
-          <h1 className="mt-4 font-headline text-5xl font-light leading-tight tracking-tight text-primary md:text-7xl">
+          <span className="label-text text-secondary">Archive</span>
+          <h1 className="mt-4 font-headline text-5xl font-normal leading-tight tracking-tight text-primary md:text-7xl">
             Previously held.
           </h1>
-          <p className="mt-4 max-w-md font-body text-[14px] leading-[1.7] text-on-surface-variant">
+          <p className="mt-4 max-w-md font-body text-[15px] leading-[1.7] text-on-surface-variant">
             A record of past pieces. These are no longer available &mdash; shown
             here as a reference for the range and quality of the collection.
           </p>
@@ -51,7 +51,7 @@ export default function SoldArchivePage() {
           </div>
         ) : (
           <div className="py-24 text-center">
-            <p className="font-headline text-2xl font-light text-on-surface-variant/70">
+            <p className="font-headline text-2xl font-normal text-on-surface-variant/70">
               No archived pieces yet.
             </p>
           </div>

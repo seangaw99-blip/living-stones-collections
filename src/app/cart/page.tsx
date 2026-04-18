@@ -14,10 +14,10 @@ export default function CartPage() {
       <div className="pt-16 pb-24 md:pt-24">
         <Container size="narrow">
           <div className="py-20 text-center">
-            <h1 className="font-headline text-4xl font-light tracking-tight text-primary">
+            <h1 className="font-headline text-4xl font-normal tracking-tight text-primary">
               Your cart is empty.
             </h1>
-            <p className="mt-3 font-body text-[14px] text-on-surface-variant">
+            <p className="mt-3 font-body text-[15px] text-on-surface-variant">
               Browse the collection to find a piece.
             </p>
             <div className="mt-10">
@@ -34,7 +34,7 @@ export default function CartPage() {
   return (
     <div className="pt-16 pb-24 md:pt-24">
       <Container size="narrow">
-        <h1 className="mb-12 font-headline text-5xl font-light leading-tight tracking-tight text-primary">
+        <h1 className="mb-12 font-headline text-5xl font-normal leading-tight tracking-tight text-primary">
           Your cart.
         </h1>
 
@@ -59,7 +59,7 @@ export default function CartPage() {
 
               {/* Details */}
               <div className="min-w-0 flex-1">
-                <h3 className="font-headline text-xl font-light text-primary">
+                <h3 className="font-headline text-xl font-normal text-primary">
                   {item.name}
                 </h3>
                 <p className="mt-1 label-text text-outline">{item.origin}</p>
@@ -88,7 +88,7 @@ export default function CartPage() {
         <div className="mt-8">
           <div className="mb-6 flex items-center justify-between">
             <span className="label-text text-outline">Total</span>
-            <span className="font-headline text-3xl font-light text-primary">
+            <span className="font-headline text-3xl font-normal text-primary">
               &#8369;{cartTotal.toLocaleString()}
             </span>
           </div>

@@ -48,8 +48,8 @@ export default function ContactPage() {
       <Container>
         {/* Header */}
         <div className="max-w-3xl">
-          <span className="label-text text-outline">Contact</span>
-          <h1 className="mt-4 font-headline text-5xl font-light leading-tight tracking-tight text-primary md:text-6xl lg:text-7xl">
+          <span className="label-text text-secondary">Contact</span>
+          <h1 className="mt-4 font-headline text-5xl font-normal leading-tight tracking-tight text-primary md:text-6xl lg:text-7xl">
             Let&apos;s talk.
           </h1>
           <p className="mt-6 max-w-lg font-body text-base leading-[1.7] text-on-surface-variant">
@@ -69,7 +69,7 @@ export default function ContactPage() {
                 data-reveal
               >
                 <dt className="label-text text-outline">{item.label}</dt>
-                <dd className="font-headline text-lg font-light text-primary md:text-xl">
+                <dd className="font-headline text-lg font-normal text-primary md:text-xl">
                   {item.href ? (
                     <a
                       href={item.href}
@@ -89,16 +89,16 @@ export default function ContactPage() {
           <div className="lg:col-span-5" data-reveal>
             <div className="bg-surface-container-low p-10 md:p-12">
               <span className="label-text text-outline">Start a conversation</span>
-              <h2 className="mt-3 font-headline text-3xl font-light leading-tight tracking-tight text-primary md:text-4xl">
+              <h2 className="mt-3 font-headline text-3xl font-normal leading-tight tracking-tight text-primary md:text-4xl">
                 Two ways to reach us.
               </h2>
 
               <div className="mt-10 flex flex-col gap-5">
                 <div>
-                  <h3 className="font-headline text-xl font-light text-primary">
+                  <h3 className="font-headline text-xl font-normal text-primary">
                     Send a message
                   </h3>
-                  <p className="mt-1 font-body text-[13px] leading-[1.7] text-on-surface-variant">
+                  <p className="mt-1 font-body text-[14px] leading-[1.7] text-on-surface-variant">
                     Ask about a specimen, request provenance details, or just say hello.
                   </p>
                   <div className="mt-4">
@@ -111,10 +111,10 @@ export default function ContactPage() {
                 </div>
 
                 <div className="hairline-top pt-6">
-                  <h3 className="font-headline text-xl font-light text-primary">
+                  <h3 className="font-headline text-xl font-normal text-primary">
                     Book a video call
                   </h3>
-                  <p className="mt-1 font-body text-[13px] leading-[1.7] text-on-surface-variant">
+                  <p className="mt-1 font-body text-[14px] leading-[1.7] text-on-surface-variant">
                     See the specimen live via Zoom, Google Meet, or Messenger.
                   </p>
                   <div className="mt-4">
@@ -132,7 +132,7 @@ export default function ContactPage() {
 
         {/* Closing note */}
         <div className="mt-20 max-w-xl hairline-top pt-10" data-reveal>
-          <p className="font-headline text-xl font-light italic leading-snug text-primary/80 md:text-2xl">
+          <p className="font-headline text-xl font-normal italic leading-snug text-primary/80 md:text-2xl">
             &ldquo;Every purchase starts with a conversation. We&rsquo;d rather
             know who the piece is going to than make a quiet sale.&rdquo;
           </p>

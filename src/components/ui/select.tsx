@@ -23,7 +23,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
             id={id}
             className={cn(
               'w-full appearance-none rounded-lg bg-surface-container-lowest px-4 py-3 pr-10',
-              'hairline font-body text-[14px] text-on-surface outline-none',
+              'hairline font-body text-[15px] text-on-surface outline-none',
               'transition-colors duration-200',
               'focus:border-secondary',
               error && 'border-error',

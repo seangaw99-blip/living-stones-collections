@@ -59,10 +59,10 @@ export function VideoCallForm() {
   if (status === 'success') {
     return (
       <div className="bg-surface-container-low p-10 text-center">
-        <p className="font-headline text-2xl font-light text-primary">
+        <p className="font-headline text-2xl font-normal text-primary">
           Booking received.
         </p>
-        <p className="mt-2 font-body text-[13px] text-on-surface-variant">
+        <p className="mt-2 font-body text-[14px] text-on-surface-variant">
           We will confirm your time and send a meeting link within 24 hours.
         </p>
       </div>

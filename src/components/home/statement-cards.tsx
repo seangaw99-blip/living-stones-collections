@@ -28,10 +28,10 @@ export function StatementCards() {
       <Container>
         {/* Section header */}
         <header className="mb-16 max-w-2xl md:mb-20" data-reveal>
-          <span className="label-text text-outline">Philosophy</span>
-          <h2 className="mt-4 font-headline text-4xl font-light leading-[1.05] tracking-tight text-primary md:text-5xl lg:text-6xl">
+          <span className="label-text text-secondary">Philosophy</span>
+          <h2 className="mt-4 font-headline text-5xl font-normal leading-[1.02] tracking-tight text-primary md:text-6xl lg:text-7xl">
             Fewer pieces.{' '}
-            <span className="italic text-primary/55">Chosen slowly.</span>
+            <span className="italic font-light text-primary/55">Chosen slowly.</span>
           </h2>
         </header>
 
@@ -56,17 +56,17 @@ export function StatementCards() {
             {/* Text — generous padding */}
             <div className="flex flex-1 flex-col p-8 md:p-12 lg:p-14">
               <div className="flex items-start justify-between gap-6">
-                <span className="font-headline text-5xl font-light leading-none text-secondary md:text-6xl">
+                <span className="font-headline text-5xl font-normal leading-none text-secondary md:text-6xl">
                   {statements[0].n}
                 </span>
                 <span className="label-text self-end text-outline">
                   {statements[0].meta}
                 </span>
               </div>
-              <h3 className="mt-8 font-headline text-3xl font-light leading-tight text-primary md:text-4xl">
+              <h3 className="mt-8 font-headline text-3xl font-normal leading-tight text-primary md:text-4xl">
                 {statements[0].headline}
               </h3>
-              <p className="mt-5 max-w-md font-body text-[14px] leading-[1.75] text-on-surface-variant md:text-[15px]">
+              <p className="mt-5 max-w-md font-body text-[15px] leading-[1.75] text-on-surface-variant md:text-[15px]">
                 {statements[0].body}
               </p>
             </div>
@@ -78,17 +78,17 @@ export function StatementCards() {
             className="flex flex-col bg-surface p-8 md:col-span-5 md:p-12 lg:p-14"
           >
             <div className="flex items-start justify-between gap-6">
-              <span className="font-headline text-4xl font-light leading-none text-secondary md:text-5xl">
+              <span className="font-headline text-4xl font-normal leading-none text-secondary md:text-5xl">
                 {statements[1].n}
               </span>
               <span className="label-text self-end text-outline">
                 {statements[1].meta}
               </span>
             </div>
-            <h3 className="mt-8 font-headline text-3xl font-light leading-tight text-primary md:text-4xl">
+            <h3 className="mt-8 font-headline text-3xl font-normal leading-tight text-primary md:text-4xl">
               {statements[1].headline}
             </h3>
-            <p className="mt-5 font-body text-[14px] leading-[1.75] text-on-surface-variant md:text-[15px]">
+            <p className="mt-5 font-body text-[15px] leading-[1.75] text-on-surface-variant md:text-[15px]">
               {statements[1].body}
             </p>
           </article>
@@ -99,17 +99,17 @@ export function StatementCards() {
             className="flex flex-col bg-surface p-8 md:col-span-5 md:p-12 lg:p-14"
           >
             <div className="flex items-start justify-between gap-6">
-              <span className="font-headline text-4xl font-light leading-none text-secondary md:text-5xl">
+              <span className="font-headline text-4xl font-normal leading-none text-secondary md:text-5xl">
                 {statements[2].n}
               </span>
               <span className="label-text self-end text-outline">
                 {statements[2].meta}
               </span>
             </div>
-            <h3 className="mt-8 font-headline text-3xl font-light leading-tight text-primary md:text-4xl">
+            <h3 className="mt-8 font-headline text-3xl font-normal leading-tight text-primary md:text-4xl">
               {statements[2].headline}
             </h3>
-            <p className="mt-5 font-body text-[14px] leading-[1.75] text-on-surface-variant md:text-[15px]">
+            <p className="mt-5 font-body text-[15px] leading-[1.75] text-on-surface-variant md:text-[15px]">
               {statements[2].body}
             </p>
           </article>

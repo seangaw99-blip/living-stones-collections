@@ -24,7 +24,7 @@
   /* Text + primary */
   --on-background: #1b1c1a;
   --on-surface: #1b1c1a;
-  --on-surface-variant: #4c463f;
+  --on-surface-variant: #2f2a25;
   --primary: #24201b;
   --primary-container: #3A3530; /* brand deep stone — CTAs, footer */
   --on-primary: #ffffff;
@@ -35,8 +35,8 @@
   --on-secondary: #ffffff;
 
   /* Outlines + borders */
-  --outline: #8a857f;
-  --outline-variant: #C4BDB3;
+  --outline: #6a6155;
+  --outline-variant: #A69E92;
 
   /* Error */
   --error: #ba1a1a;

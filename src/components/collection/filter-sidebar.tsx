@@ -37,7 +37,7 @@ function FilterGroup({
       <h3 className="mb-6 label-text text-outline hairline-bottom pb-2">
         {label}
       </h3>
-      <ul className="space-y-4 text-[14px] leading-[1.7] text-on-surface-variant">
+      <ul className="space-y-4 text-[15px] leading-[1.7] text-on-surface-variant">
         {children}
       </ul>
     </div>
@@ -107,7 +107,7 @@ export function FilterSidebar({ origins }: FilterSidebarProps) {
         onClick={() => setOpen((v) => !v)}
         className="mb-6 flex w-full items-center justify-between hairline rounded-lg px-5 py-3 lg:hidden"
       >
-        <span className="font-body text-[13px] text-on-surface">
+        <span className="font-body text-[14px] text-on-surface">
           Filters{activeCount > 0 && <span className="ml-2 rounded-full bg-secondary px-2 py-0.5 text-[11px] text-on-primary">{activeCount}</span>}
         </span>
         <span className="material-symbols-outlined text-[18px] text-outline transition-transform duration-200" style={{ transform: open ? 'rotate(180deg)' : 'none' }}>
@@ -171,7 +171,7 @@ export function FilterSidebar({ origins }: FilterSidebarProps) {
       {hasFilters && (
         <button
           onClick={() => router.push(pathname, { scroll: false })}
-          className="font-body text-[13px] text-outline underline underline-offset-4 decoration-[0.5px] transition-colors hover:text-primary"
+          className="font-body text-[14px] text-outline underline underline-offset-4 decoration-[0.5px] transition-colors hover:text-primary"
         >
           Clear all filters
         </button>

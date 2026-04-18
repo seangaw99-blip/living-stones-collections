@@ -90,7 +90,7 @@ export function MobileMenu({ links, isOpen, onClose }: MobileMenuProps) {
             <Link
               href={link.href}
               onClick={onClose}
-              className="font-headline text-5xl italic font-light tracking-tight text-primary/80 transition-colors duration-200 hover:text-primary"
+              className="font-headline text-5xl italic font-normal tracking-tight text-primary/80 transition-colors duration-200 hover:text-primary"
             >
               {link.label}
             </Link>

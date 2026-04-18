@@ -45,11 +45,11 @@ function CardContent({
 
       {/* Details row */}
       <div className="flex items-start justify-between gap-3 mb-2">
-        <h3 className="font-headline text-2xl font-light text-primary transition-colors duration-300 group-hover:text-secondary">
+        <h3 className="font-headline text-2xl font-normal text-primary transition-colors duration-300 group-hover:text-secondary">
           {specimen.name}
         </h3>
         {!isSold && (
-          <span className="shrink-0 font-body text-[14px] text-primary pt-2">
+          <span className="shrink-0 font-headline text-xl font-medium text-secondary pt-1">
             &#8369;{specimen.price.toLocaleString()}
           </span>
         )}
@@ -60,7 +60,7 @@ function CardContent({
       </p>
 
       {showDescription && (
-        <p className="mb-6 font-body text-[14px] leading-[1.7] text-on-surface-variant">
+        <p className="mb-6 font-body text-[15px] leading-[1.7] text-on-surface-variant">
           {specimen.description}
         </p>
       )}

@@ -109,8 +109,8 @@ export default async function OriginPage({ params }: OriginPageProps) {
         />
 
         <div className="mt-10 mb-16 max-w-3xl">
-          <span className="label-text text-outline">Origin</span>
-          <h1 className="mt-4 font-headline text-5xl font-light leading-tight tracking-tight text-primary md:text-6xl lg:text-7xl">
+          <span className="label-text text-secondary">Origin</span>
+          <h1 className="mt-4 font-headline text-5xl font-normal leading-tight tracking-tight text-primary md:text-6xl lg:text-7xl">
             Specimens from {country}.
           </h1>
           <p className="mt-6 max-w-xl font-body text-[15px] leading-[1.8] text-on-surface-variant">

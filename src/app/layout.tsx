@@ -14,7 +14,7 @@ const manrope = Manrope({
 const newsreader = Newsreader({
   variable: '--font-newsreader',
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
+  weight: ['300', '400', '500', '600'],
   style: ['normal', 'italic'],
 });
 

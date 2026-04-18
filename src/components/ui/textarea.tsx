@@ -21,7 +21,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           rows={5}
           className={cn(
             'w-full resize-none rounded-lg bg-surface-container-lowest px-4 py-3',
-            'hairline font-body text-[14px] text-on-surface outline-none',
+            'hairline font-body text-[15px] text-on-surface outline-none',
             'placeholder:text-on-surface-variant/50',
             'transition-colors duration-200',
             'focus:border-secondary',

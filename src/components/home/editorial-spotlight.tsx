@@ -45,7 +45,7 @@ export function EditorialSpotlight() {
         >
           <span className="label-text text-secondary">In focus</span>
 
-          <h2 className="mt-5 font-headline text-4xl font-light leading-[1.05] tracking-tight text-on-primary md:text-5xl lg:text-[clamp(40px,4.2vw,72px)]">
+          <h2 className="mt-5 font-headline text-5xl font-normal leading-[1.02] tracking-tight text-on-primary md:text-6xl lg:text-[clamp(48px,5vw,88px)]">
             {specimen.name}.
           </h2>
 
@@ -59,7 +59,7 @@ export function EditorialSpotlight() {
               <dt className="label-text w-28 shrink-0 text-on-primary/50">
                 Origin
               </dt>
-              <dd className="font-headline text-base font-light italic text-on-primary">
+              <dd className="font-headline text-base font-normal italic text-on-primary">
                 {specimen.origin}
               </dd>
             </div>
@@ -67,7 +67,7 @@ export function EditorialSpotlight() {
               <dt className="label-text w-28 shrink-0 text-on-primary/50">
                 Weight
               </dt>
-              <dd className="font-body text-[14px] text-on-primary/85">
+              <dd className="font-body text-[15px] text-on-primary/85">
                 {specimen.weight}
               </dd>
             </div>
@@ -76,7 +76,7 @@ export function EditorialSpotlight() {
                 <dt className="label-text w-28 shrink-0 text-on-primary/50">
                   Dimensions
                 </dt>
-                <dd className="font-body text-[14px] text-on-primary/85">
+                <dd className="font-body text-[15px] text-on-primary/85">
                   {specimen.dimensions}
                 </dd>
               </div>
@@ -87,7 +87,7 @@ export function EditorialSpotlight() {
             <Link
               href={`/collection/${specimen.slug}`}
               aria-label={`Read the full story of ${specimen.name} from ${specimen.origin}`}
-              className="group inline-flex items-center gap-3 font-body text-[14px] text-on-primary underline decoration-[0.5px] decoration-on-primary/50 underline-offset-[6px] transition-colors hover:text-secondary hover:decoration-secondary"
+              className="group inline-flex items-center gap-3 font-body text-[15px] text-on-primary underline decoration-[0.5px] decoration-on-primary/50 underline-offset-[6px] transition-colors hover:text-secondary hover:decoration-secondary"
             >
               Read the full story
               <span

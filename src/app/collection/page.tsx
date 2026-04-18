@@ -83,7 +83,7 @@ export default async function CollectionPage({
       />
       {/* Page Header */}
       <header className="mx-auto w-full max-w-screen-2xl px-6 pt-16 pb-12 md:px-12 md:pt-24 md:pb-16">
-        <h1 className="font-headline text-4xl font-light tracking-tight text-primary md:text-6xl lg:text-7xl">
+        <h1 className="font-headline text-5xl font-normal tracking-tight leading-[1.02] text-primary md:text-7xl lg:text-8xl">
           The Collection
         </h1>
         <p className="mt-6 max-w-xl font-body text-[15px] leading-[1.7] text-on-surface-variant">
@@ -132,7 +132,7 @@ export default async function CollectionPage({
             ))
           ) : (
             <div className="col-span-full py-24 text-center">
-              <p className="font-headline text-2xl font-light text-on-surface-variant">
+              <p className="font-headline text-2xl font-normal text-on-surface-variant">
                 No specimens match your filters.
               </p>
             </div>
